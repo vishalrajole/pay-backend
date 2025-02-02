@@ -3,6 +3,7 @@ import { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.int
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { Logger } from 'nestjs-pino';
+import cookieParser from 'cookie-parser';
 
 const ALLOWED_ORIGINS = [
   'http://localhost:3000',
@@ -27,6 +28,7 @@ async function bootstrap() {
 
   app.enableCors(corsOptions);
 
+  app.use(cookieParser());
   app.useLogger(app.get(Logger));
   app.useGlobalPipes(
     new ValidationPipe({
