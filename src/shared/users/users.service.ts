@@ -20,7 +20,6 @@ export class UsersService {
         },
       });
     } catch (error) {
-      console.error('error.code', error.code);
       if (error.code === 'P2002') {
         throw new UnprocessableEntityException('Email already exists.');
       }

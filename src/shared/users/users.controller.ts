@@ -1,4 +1,5 @@
-import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseInterceptors } from '@nestjs/common';
+import { NoFilesInterceptor } from '@nestjs/platform-express';
 import { UsersService } from './users.service';
 import { CreateUserRequest } from './user.dto';
 
@@ -10,6 +11,7 @@ export class UsersController {
   async getUsers() {}
 
   @Post()
+  @UseInterceptors(NoFilesInterceptor())
   async createUser(@Body() request: CreateUserRequest) {
     return this.userService.createUser(request);
   }
