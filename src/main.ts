@@ -1,6 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 import { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.interface';
 import { AppModule } from './app.module';
+import { ValidationPipe } from '@nestjs/common';
+import { Logger } from 'nestjs-pino';
 
 const ALLOWED_ORIGINS = [
   'http://localhost:3000',
@@ -25,6 +27,12 @@ async function bootstrap() {
 
   app.enableCors(corsOptions);
 
+  app.useLogger(app.get(Logger));
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+    }),
+  );
   await app.listen(process.env.PORT ?? 3001);
 }
 
