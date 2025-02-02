@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
+import { LoggerModule } from 'nestjs-pino';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { PaymentsModule } from './shared/payments/payments.module';
 import { NotificationsModule } from './shared/notifications/notifications.module';
 import { UsersModule } from './shared/users/users.module';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { LoggerModule } from 'nestjs-pino';
+import { AuthModule } from './shared/auth/auth.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { LoggerModule } from 'nestjs-pino';
     PaymentsModule,
     NotificationsModule,
     UsersModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
