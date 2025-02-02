@@ -21,7 +21,7 @@ import { LoggerModule } from 'nestjs-pino';
                     singleLine: true,
                   },
                 },
-            prettyPrint: !isProduction,
+
             level: isProduction ? 'info' : 'debug',
           },
         };
