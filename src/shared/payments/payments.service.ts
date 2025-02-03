@@ -21,8 +21,8 @@ export class PaymentsService {
   }
 
   async fetchPaymentsData({
-    start,
-    limit,
+    start = 0,
+    limit = 50,
     sorting,
     searchTerm,
   }: {

@@ -13,7 +13,7 @@ export class PaymentsController {
     @Query('searchTerm') searchTerm?: string,
   ) {
     const parsedSorting = sorting ? JSON.parse(sorting) : [];
-    return this.paymentsService.fetchPaymentsData({
+    return await this.paymentsService.fetchPaymentsData({
       start: +start,
       limit: +limit,
       sorting: parsedSorting,
